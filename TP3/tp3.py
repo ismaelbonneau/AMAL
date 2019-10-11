@@ -1,5 +1,6 @@
 import numpy as np
 import pickle
+import matplotlib.pyplot as plt
 
 import torch
 import torch.nn as nn
@@ -8,6 +9,19 @@ from torch.utils.data import DataLoader
 
 from mlxtend.data import loadlocal_mnist
 from sklearn.preprocessing import normalize
+
+def afficher(x):
+    plt.axis("off")
+    plt.imshow(x.reshape(28, 28), cmap='gray', vmin=0, vmax=1)
+    plt.show()
+
+def comparer(original, reconstructed):
+    fig, axs = plt.subplots(1, 2)
+	axs[0].axis("off")
+	axs[0].imshow(original.reshape(28, 28), cmap='gray', vmin=0, vmax=1)
+	axs[1].axis("off")
+	axs[1].imshow(reconstructed.reshape(28, 28), cmap='gray', vmin=0, vmax=1)
+	plt.show()
 
 # Dataset d'images MNIST
 
